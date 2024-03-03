@@ -1,0 +1,34 @@
+<flynt-component name="BlockTeam" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container">
+    <div class="content" data-size="{{ options.size }}" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
+
+      <div class="teamMembers">
+        {% for member in teamMembers %}
+          <div class="member">
+            <figure class="figure">
+              <img class="figure-image lazyload"
+                  src="{{ member.photo.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
+                  width="{{ 768 }}"
+                  height="{{ (768 / 3 * 2)|round }}"
+                  srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                  data-srcset="
+                    {{ member.photo.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
+                    {{ member.photo.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
+                    {{ member.photo.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
+                    {{ member.photo.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
+                    {{ member.photo.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
+                    {{ member.photo.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
+                    {{ member.photo.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
+                  data-sizes="auto"
+                  alt="{{ member.photo.alt|e }}">
+            </figure>
+
+            <h5>{{ member.name }}</h5>
+          </div>
+        {% endfor %}
+      </div>
+
+
+    </div>
+  </div>
+</flynt-component>

@@ -1,0 +1,13 @@
+flynt-component[name="BlockTeam"] {
+  .teamMembers {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .member {
+    h5 {
+      margin-block-start: 0.5rem;
+    }
+  }
+}
