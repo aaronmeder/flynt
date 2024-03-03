@@ -1,0 +1,32 @@
+<flynt-component name="ServiceSlider" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+         <script type="application/json">{{ jsonData|json_encode }}</script>
+
+  <div class="container" data-flow="layout">
+    {% if preContentHtml %}
+      <div data-size="medium" data-align="{{ titleAlignment }}" data-text-align="{{ titleAlignment }}">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+       <div class="sliders">
+
+      <div data-ref="sliderMain" data-slider="main" class="swiper-container sliderMain boxPadding">
+        <div class="swiper-wrapper">
+          {% for item in items %}
+
+            <div class="swiper-slide sliderMain-slide">
+               <figure class="figure">
+               <div class="figure-image lazyload">
+                <h2>{{item.servicetitle}}</h2>
+                <p>{{item.contentHtml}}</p>
+                <a class="button" href="{{item.linkpage}}" rel="noopener">Learn More</a>
+              </div>
+                </figure>
+            </div>
+          {% endfor %}
+        </div>
+         <button type="button" data-ref="prev" class="slider-button slider-button--prev" aria-label="{{ sliderOptions.a11y.prevSlideMessage|e }}"></button>
+        <button type="button" data-ref="next" class="slider-button slider-button--next" aria-label="{{ sliderOptions.a11y.nextSlideMessage|e }}"></button>
+      </div>
+  </div>
+   
+</flynt-component>
