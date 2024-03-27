@@ -5,7 +5,7 @@
  *
  */
 
-namespace Flynt\TimberMetaTransformValue;
+namespace Flynt\TimberMetaTransformValues;
 
 use Timber\Timber;
 
@@ -67,7 +67,7 @@ function transformImage($value, $id, array $field)
  * Transform ACF gallery field
  *
  * @param mixed $value
- * @param int|string
+ * @param int|string $id
  */
 function transformGallery($value, $id, array $field)
 {
@@ -92,10 +92,6 @@ function transformPostObject($value, $id, array $field)
         return $value;
     }
 
-    if (!shouldTransformValue($value, $field)) {
-        return $value;
-    }
-
     if (!$field['multiple']) {
         return Timber::get_post($value);
     }
@@ -107,7 +103,7 @@ function transformPostObject($value, $id, array $field)
  * Transform ACF relationship field
  *
  * @param mixed $value
- * @param int|string
+ * @param int|string $id
  */
 function transformRelationship($value, $id, array $field)
 {
@@ -122,7 +118,7 @@ function transformRelationship($value, $id, array $field)
  * Transform ACF taxonomy field
  *
  * @param mixed $value
- * @param int|string
+ * @param int|string $id
  */
 function transformTaxonomy($value, $id, array $field)
 {
@@ -131,7 +127,8 @@ function transformTaxonomy($value, $id, array $field)
     }
 
     if ($field['field_type'] === 'select' || $field['field_type'] === 'radio') {
-        return Timber::get_term((int) $value);
+        $termId = isset($value->term_id) ? $value->term_id : $value;
+        return Timber::get_term((int) $termId);
     }
 
     return Timber::get_terms((array) $value);

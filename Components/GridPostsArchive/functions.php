@@ -9,7 +9,7 @@ use Timber\Timber;
 const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
 
-add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
+add_filter('Flynt/addComponentData?name=GridPostsArchive', function (array $data): array {
     $data['uuid'] ??= wp_generate_uuid4();
     $postType = POST_TYPE;
     $taxonomy = FILTER_BY_TAXONOMY;
@@ -27,6 +27,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
 
             return $timberTerm;
         }, $terms);
+
         // Add item for all posts
         array_unshift($data['terms'], [
             'link' => get_post_type_archive_link($postType),
