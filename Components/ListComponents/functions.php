@@ -23,7 +23,9 @@ add_filter('Flynt/addComponentData?name=ListComponents', function (array $data):
 
                 $block['componentScreenshot'] = [
                     'src' => $src . '?v=' . wp_get_theme()->get('Version'),
-                    'aspect' => $width / $height
+                    'aspect' => $width / $height,
+                    'width' => $width,
+                    'height' => $height
                 ];
             }
 
@@ -44,7 +46,7 @@ add_filter('Flynt/addComponentData?name=ListComponents', function (array $data):
     return $data;
 });
 
-add_filter('acf/load_field/name=component', function (array $field) {
+add_filter('acf/load_field/name=component', function (array $field): array {
     $componentManager = ComponentManager::getInstance();
     $field['choices'] = array_flip($componentManager->getAll());
     return $field;
