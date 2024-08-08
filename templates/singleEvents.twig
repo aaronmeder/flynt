@@ -1,0 +1,14 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  <article>
+    <header>
+      {{ renderComponent('BlockPostHeader', {post: post}) }}
+    </header>
+    <section class="event-content">
+      {% for component in post.meta('pageComponents') %}
+        {{ renderComponent(component) }}
+      {% endfor %}
+    </section>
+  </article>
+{% endblock %}
