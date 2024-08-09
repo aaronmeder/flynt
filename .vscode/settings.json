@@ -1,0 +1,47 @@
+{
+  "_comment": "--- Disable VS Code internal linters to prevent duplicate errors ----",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+
+  "_comment": "--- SCSS: Linting & Fixing with Stylelint ----",
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  "_comment": "--- JS: Linting & Fixing with StandardJS ----",
+  "standard.enable": true,
+  "standard.run": "onType",
+  "standard.autoFixOnSave": true,
+
+  "_comment": "--- PHP: Linting & Fixing with PHP Sniffer & Beautifier ----",
+  "phpsab.snifferEnable": true,
+  "phpsab.fixerEnable": true,
+  "[php]": {
+    "editor.formatOnSave": true
+  },
+
+  "_comment": "--- Flynt: Recommended VS Code settings ----",
+
+  "files.associations": {
+    "*.html": "twig"
+  },
+
+  "emmet.includeLanguages": {
+    "twig": "html"
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "theme": true,
+    "dist": true
+  },
+}

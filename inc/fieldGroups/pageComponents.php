@@ -28,6 +28,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\SliderImages\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
                     Components\ServiceSlider\getACFLayout(),
+                    Components\FlexibleArchive\getACFLayout(),
                 ],
             ],
         ],
